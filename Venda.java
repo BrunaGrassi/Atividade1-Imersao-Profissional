@@ -11,7 +11,18 @@ class Produto {
         this.quantidade = quantidade;
     }
 }
+
 public class Venda {
+    public static void main (String[] args){
+        final Produto produto = new Produto("produto1", 100, 8);
+        final Produto produto2 = new Produto("produto2", 550, 3);
+
+        final Venda venda = new Venda();
+        venda.adicionarProduto(produto);
+        venda.adicionarProduto(produto2);
+        venda.calcularTotal();
+    }
+
     private List<Produto> produtos;
     public Venda() {
         this.produtos = new ArrayList<>();
@@ -19,7 +30,7 @@ public class Venda {
     public void adicionarProduto(Produto produto) {
         this.produtos.add(produto);
     }
-    public double calcularTotal() {
+    public void calcularTotal() {
         double total = 0;
         for (Produto produto : produtos) {
             total += produto.valorUnitario * produto.quantidade;
@@ -31,6 +42,7 @@ public class Venda {
         } else if (total >= 2000) {
             total = total * 0.15;
         }
-        return total;
+        
+        System.out.println("Valor total com desconto: " + total);
     }
 }
