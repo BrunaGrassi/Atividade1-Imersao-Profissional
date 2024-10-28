@@ -14,8 +14,8 @@ class Produto {
 
 public class Venda {
     public static void main (String[] args){
-        final Produto produto = new Produto("produto1", 100, 8);
-        final Produto produto2 = new Produto("produto2", 550, 3);
+        final Produto produto = new Produto("produto1", 100, 4);
+        final Produto produto2 = new Produto("produto2", 550, 4);
 
         final Venda venda = new Venda();
         venda.adicionarProduto(produto);
@@ -35,12 +35,12 @@ public class Venda {
         for (Produto produto : produtos) {
             total += produto.valorUnitario * produto.quantidade;
         }
-        if (total >= 500 || total < 1000) {
-            total = total * 0.05;
-        } else if (total >= 1000 || total < 2000) {
-            total = total * 0.10;
-        } else if (total >= 2000) {
-            total = total * 0.15;
+        if (total >= 500 && total <= 1000) {
+            total = total - (total * 0.05);
+        } else if (total > 1000 && total <= 2000) {
+            total = total - (total * 0.10);
+        } else if (total > 2000) {
+            total = total - (total * 0.15);
         }
         
         System.out.println("Valor total com desconto: " + total);
